@@ -9,6 +9,7 @@ import comserver.ComunicadorControlador;
 import comserver.IControladorObservable;
 import coninterfaces.IFachadaModeloUsuario;
 import conversors.IJsonToObject;
+import conversors.JsonToObject;
 import entidades.Usuario;
 
 /**
@@ -22,6 +23,7 @@ public class ControladorUsuario implements IControladorObservable {
     private IJsonToObject conversor;
 
     public ControladorUsuario() {
+        this.conversor = new JsonToObject();
         this.fachadaUsuario = new FachadaModeloUsuario();
         this.comunicador = new ComunicadorControlador(this, "221");
     }
@@ -30,8 +32,10 @@ public class ControladorUsuario implements IControladorObservable {
     
     @Override
     public void actualizar(String[] info) {
-        Usuario usuario = conversor.convertirUsuario(info[2]);
-        comunicador.registrarUsuario(usuario, info[1]);
+        Usuario usuario = conversor.convertirUsuario(info[2]);        
+        //boolean resultado = fachadaUsuario.agregarUsuario(usuario); 
+        comunicador.registrarUsuario(true, info[1]);
+        fachadaUsuario.agregarUsuario(usuario);
     }
     
     public static void correrControlador(){

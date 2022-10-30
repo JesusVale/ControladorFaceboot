@@ -6,6 +6,7 @@ package comserver;
 
 import coninterfaces.IComunicadorControlador;
 import conversors.IJsonToObject;
+import conversors.JsonToObject;
 import entidades.Usuario;
 import eventos.Eventos;
 
@@ -19,15 +20,15 @@ public class ComunicadorControlador implements IComunicadorControlador {
     private IJsonToObject conversor;
     
     public ComunicadorControlador(IControladorObservable controladorObservable, String codigo) {
-        
+        this.conversor = new JsonToObject();
         this.clienteControlador = new ClienteControlador(5000, controladorObservable, codigo);
         new Thread(clienteControlador).start();
     }
     
     @Override
-    public void registrarUsuario(Usuario usuario, String seguimiento) {
-        String usuarioStr =  conversor.convertirObjetoString(usuario);
-        String[] mensajes = {Eventos.registrarUsuario, seguimiento, usuarioStr};
-        clienteControlador.enviarMensaje(conversor.convertirObjetoString(mensajes));
+    public void registrarUsuario(boolean resultado, String seguimiento) {
+        String[] arreglo = {Eventos.registrarUsuario,seguimiento ,conversor.convertirObjetoString(resultado)}; 
+        clienteControlador.enviarMensaje(conversor.convertirObjetoString(arreglo));
+        
     }
 }

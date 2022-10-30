@@ -12,6 +12,6 @@ import entidades.Usuario;
  */
 public interface IComunicadorControlador {
     
-    public void registrarUsuario(Usuario usuario, String seguimiento);
+    public void registrarUsuario(boolean resultado, String seguimiento);
     
 }

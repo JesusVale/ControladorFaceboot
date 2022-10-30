@@ -35,9 +35,10 @@ public class ClienteControlador implements Runnable {
     
     @Override
     public void run() {
-        final String HOST = "127.0.0.1";
+        final String HOST = "192.168.56.1";
 
         try{
+            
             sc = new Socket(HOST, puerto);
             in = new BufferedReader(new InputStreamReader(sc.getInputStream()));
             out = new BufferedWriter(new OutputStreamWriter(sc.getOutputStream()));
@@ -45,10 +46,12 @@ public class ClienteControlador implements Runnable {
             while(true){
                 String mensaje = in.readLine();
                 if(mensaje == null) break;
-                String[] mensajes = conversor.convertirStrings(codigo);
+                System.out.println("si");
+                String[] mensajes = conversor.convertirStrings(mensaje);
                 controladorObservable.actualizar(mensajes);
             }
         } catch(IOException ie){
+            ie.printStackTrace();
             cerrarTodo(sc, in, out);
         }
     }
