@@ -34,4 +34,8 @@ public class ControladorUsuario implements IControladorObservable {
         comunicador.registrarUsuario(usuario, info[1]);
     }
     
+    public static void correrControlador(){
+        
+    }
+    
 }

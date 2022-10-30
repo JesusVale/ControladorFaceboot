@@ -21,7 +21,7 @@ public class ComunicadorControlador implements IComunicadorControlador {
     public ComunicadorControlador(IControladorObservable controladorObservable, String codigo) {
         
         this.clienteControlador = new ClienteControlador(5000, controladorObservable, codigo);
-        
+        new Thread(clienteControlador).start();
     }
     
     @Override
