@@ -33,8 +33,8 @@ public class ControladorUsuario implements IControladorObservable {
     @Override
     public void actualizar(String[] info) {
         Usuario usuario = conversor.convertirUsuario(info[2]);        
-        //boolean resultado = fachadaUsuario.agregarUsuario(usuario); 
-        comunicador.registrarUsuario(true, info[1]);
+        boolean resultado = fachadaUsuario.agregarUsuario(usuario); 
+        comunicador.registrarUsuario(resultado, info[1]);
         fachadaUsuario.agregarUsuario(usuario);
     }
     
