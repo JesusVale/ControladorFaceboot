@@ -35,7 +35,7 @@ public class ClienteControlador implements Runnable {
     
     @Override
     public void run() {
-        final String HOST = "192.168.56.1";
+        final String HOST = "192.168.0.25";
 
         try{
             

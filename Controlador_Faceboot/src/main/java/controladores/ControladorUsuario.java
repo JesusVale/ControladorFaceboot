@@ -35,7 +35,6 @@ public class ControladorUsuario implements IControladorObservable {
         Usuario usuario = conversor.convertirUsuario(info[2]);        
         boolean resultado = fachadaUsuario.agregarUsuario(usuario); 
         comunicador.registrarUsuario(resultado, info[1]);
-        fachadaUsuario.agregarUsuario(usuario);
     }
     
     public static void correrControlador(){
