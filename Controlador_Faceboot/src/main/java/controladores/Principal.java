@@ -18,9 +18,6 @@ public class Principal {
      */
     public static void main(String[] args) {
         ControladorUsuario conUsuario = new ControladorUsuario();
-//        Usuario usuario=new Usuario("antonio","1234","tony@gmail.com","6441573449"); 
-//        FachadaModeloUsuario xd=new FachadaModeloUsuario();
-//        xd.agregarUsuario(usuario);
     }
     
 }
