@@ -5,7 +5,7 @@ import coninterfaces.IFachadaModeloUsuario;
 import interfaces.IConexionBD;
 import interfaces.IModeloUsuario;
 import modelo.ConexionBD;
-import modelo.ModeloUsuario;
+import modelos.ModeloUsuario;
 
 /**
  *
