@@ -11,5 +11,5 @@ import entidades.Usuario;
  * @author jegav
  */
 public interface IFachadaModeloUsuario {
-    public boolean agregarUsuario(Usuario usuario);
+    public Usuario agregarUsuario(Usuario usuario);
 }

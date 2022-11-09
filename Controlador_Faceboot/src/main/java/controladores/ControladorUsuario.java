@@ -5,40 +5,25 @@
 package controladores;
 
 import commodelo.FachadaModeloUsuario;
-import comserver.ComunicadorControlador;
-import comserver.IControladorObservable;
 import coninterfaces.IFachadaModeloUsuario;
-import conversors.IJsonToObject;
-import conversors.JsonToObject;
 import entidades.Usuario;
 
 /**
  *
  * @author jegav
  */
-public class ControladorUsuario implements IControladorObservable {
+public class ControladorUsuario {
     
     private IFachadaModeloUsuario fachadaUsuario;
-    private ComunicadorControlador comunicador;
-    private IJsonToObject conversor;
 
     public ControladorUsuario() {
-        this.conversor = new JsonToObject();
         this.fachadaUsuario = new FachadaModeloUsuario();
-        this.comunicador = new ComunicadorControlador(this, "221");
     }
     
     
-    
-    @Override
-    public void actualizar(String[] info) {
-        Usuario usuario = conversor.convertirUsuario(info[2]);        
-        boolean resultado = fachadaUsuario.agregarUsuario(usuario); 
-        comunicador.registrarUsuario(resultado, info[1]);
+    public Usuario registrarUsuario(Usuario usuario){
+        return fachadaUsuario.agregarUsuario(usuario);
     }
     
-    public static void correrControlador(){
-        
-    }
     
 }

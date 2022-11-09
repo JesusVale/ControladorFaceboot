@@ -14,21 +14,21 @@ import eventos.Eventos;
  *
  * @author jegav
  */
-public class ComunicadorControlador implements IComunicadorControlador {
+public class ComunicadorControlador  {
     
-    private ClienteControlador clienteControlador;
-    private IJsonToObject conversor;
-    
-    public ComunicadorControlador(IControladorObservable controladorObservable, String codigo) {
-        this.conversor = new JsonToObject();
-        this.clienteControlador = new ClienteControlador(5000, controladorObservable, codigo);
-        new Thread(clienteControlador).start();
-    }
-    
-    @Override
-    public void registrarUsuario(boolean resultado, String seguimiento) {
-        String[] arreglo = {Eventos.registrarUsuario,seguimiento ,conversor.convertirObjetoString(resultado)}; 
-        clienteControlador.enviarMensaje(conversor.convertirObjetoString(arreglo));
-        
-    }
+//    private ClienteControlador clienteControlador;
+//    private IJsonToObject conversor;
+//    
+//    public ComunicadorControlador(IControladorObservable controladorObservable, String codigo) {
+//        this.conversor = new JsonToObject();
+//        this.clienteControlador = new ClienteControlador(5000, controladorObservable, codigo);
+//        new Thread(clienteControlador).start();
+//    }
+//    
+//    @Override
+//    public void registrarUsuario(boolean resultado, String seguimiento) {
+//        String[] arreglo = {Eventos.registrarUsuario,seguimiento ,conversor.convertirObjetoString(resultado)}; 
+//        clienteControlador.enviarMensaje(conversor.convertirObjetoString(arreglo));
+//        
+//    }
 }
