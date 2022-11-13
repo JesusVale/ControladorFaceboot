@@ -6,6 +6,7 @@ package controladores;
 
 import commodelo.FachadaModeloUsuario;
 import coninterfaces.IFachadaModeloUsuario;
+import entidades.Publicacion;
 import entidades.Usuario;
 
 /**
@@ -24,6 +25,11 @@ public class ControladorUsuario {
     public Usuario registrarUsuario(Usuario usuario){
         return fachadaUsuario.agregarUsuario(usuario);
     }
+    
+    public Usuario IniciarSesion(Usuario usuario){
+        return fachadaUsuario.iniciarSesion(usuario);
+    }
+    
     
     
 }

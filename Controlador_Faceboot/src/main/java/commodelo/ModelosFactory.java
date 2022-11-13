@@ -6,6 +6,7 @@ package commodelo;
 
 import interfaces.IConexionBD;
 import modelo.ConexionBD;
+import modelos.ModeloPublicacion;
 import modelos.ModeloUsuario;
 
 /**
@@ -17,6 +18,10 @@ public class ModelosFactory {
     
     public static ModeloUsuario crearModeloUsuario(){
         return new ModeloUsuario(conexionBD);
+    }
+    
+    public static ModeloPublicacion crearModeloPublicacion(){
+        return new ModeloPublicacion(conexionBD);
     }
     
 }

@@ -4,6 +4,7 @@
  */
 package coninterfaces;
 
+import entidades.Publicacion;
 import entidades.Usuario;
 
 /**
@@ -12,4 +13,5 @@ import entidades.Usuario;
  */
 public interface IFachadaModeloUsuario {
     public Usuario agregarUsuario(Usuario usuario);
+    public Usuario iniciarSesion(Usuario usuario);
 }
