@@ -8,6 +8,8 @@ import commodelo.FachadaModeloUsuario;
 import coninterfaces.IFachadaModeloUsuario;
 import entidades.Publicacion;
 import entidades.Usuario;
+import eventos.Eventos;
+import peticiones.PeticionUsuario;
 
 /**
  *
@@ -34,6 +36,15 @@ public class ControladorUsuario {
         return fachadaUsuario.editarPerfil(usuario);
     }
     
+    public PeticionUsuario consultarUsuarioPorId(Long idUsuario){
+        try{
+            Usuario usuarioEncontrado = fachadaUsuario.consultarUsuario(idUsuario);
+            return new PeticionUsuario(Eventos.consultarUsuarioPorId, 200, usuarioEncontrado);
+        } catch(Exception ex){
+
+        }
+        return null;
+    }
     
     
 }

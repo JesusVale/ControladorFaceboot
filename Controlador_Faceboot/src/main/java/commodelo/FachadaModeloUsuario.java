@@ -33,8 +33,13 @@ public class FachadaModeloUsuario implements IFachadaModeloUsuario {
     }
 
     @Override
-    public Usuario eliminarUsuario(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean eliminarUsuario(Usuario usuario) {
+        return modeloUsuario.eliminar(usuario.getId());
+    }
+    
+    @Override
+    public Usuario consultarUsuario(Long idUsuario) {
+        return modeloUsuario.consultar(idUsuario);
     }
 
 }
