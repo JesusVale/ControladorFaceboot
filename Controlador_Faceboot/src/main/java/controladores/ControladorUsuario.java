@@ -30,6 +30,10 @@ public class ControladorUsuario {
         return fachadaUsuario.iniciarSesion(usuario);
     }
     
+    public Usuario editarPerfil(Usuario usuario){
+        return fachadaUsuario.editarPerfil(usuario);
+    }
+    
     
     
 }

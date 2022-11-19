@@ -27,4 +27,14 @@ public class FachadaModeloUsuario implements IFachadaModeloUsuario {
         return modeloUsuario.login(usuario);
     }
 
+    @Override
+    public Usuario editarPerfil(Usuario usuario) {
+        return modeloUsuario.actualizar(usuario);
+    }
+
+    @Override
+    public Usuario eliminarUsuario(Usuario usuario) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }
