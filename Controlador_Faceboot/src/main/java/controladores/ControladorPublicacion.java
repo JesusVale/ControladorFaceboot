@@ -7,6 +7,9 @@ package controladores;
 import commodelo.FachadaModeloPublicacion;
 import coninterfaces.IFachadaModeloPublicacion;
 import entidades.Publicacion;
+import eventos.Eventos;
+import java.util.List;
+import peticiones.PeticionPublicaciones;
 
 /**
  *
@@ -21,5 +24,13 @@ public class ControladorPublicacion {
 
     public Publicacion registrarPublicacion(Publicacion publicacion) {
         return fachadaPublicacion.agregarPublicacion(publicacion);
+    }
+    
+    public PeticionPublicaciones consultarPublicaciones(){
+        List<Publicacion> publicaciones = fachadaPublicacion.consultarPublicaciones();
+        if(publicaciones != null){
+            return new PeticionPublicaciones(Eventos.consultarPublicaciones, 200, publicaciones);
+        }
+        return new PeticionPublicaciones(Eventos.consultarPublicaciones, 400, "No se pudieron Consultar las publicaciones");
     }
 }

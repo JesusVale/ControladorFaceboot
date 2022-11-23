@@ -6,7 +6,10 @@ package commodelo;
 
 import coninterfaces.IFachadaModeloPublicacion;
 import entidades.Publicacion;
+import eventos.Eventos;
 import interfaces.IModeloPublicacion;
+import java.util.List;
+import peticiones.PeticionPublicaciones;
 
 /**
  *
@@ -21,6 +24,11 @@ public class FachadaModeloPublicacion implements IFachadaModeloPublicacion{
     @Override
     public Publicacion agregarPublicacion(Publicacion publicacion) {
         return modeloPublicacion.registrar(publicacion);
+    }
+
+    @Override
+    public List<Publicacion> consultarPublicaciones() {
+        return this.modeloPublicacion.consultarPublicaciones();
     }
     
 }

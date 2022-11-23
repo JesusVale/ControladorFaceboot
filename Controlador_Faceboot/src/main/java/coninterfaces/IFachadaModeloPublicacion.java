@@ -5,6 +5,7 @@
 package coninterfaces;
 
 import entidades.Publicacion;
+import java.util.List;
 
 /**
  *
@@ -12,4 +13,5 @@ import entidades.Publicacion;
  */
 public interface IFachadaModeloPublicacion {
     public Publicacion agregarPublicacion(Publicacion publicacion);
+    public List<Publicacion> consultarPublicaciones();
 }
