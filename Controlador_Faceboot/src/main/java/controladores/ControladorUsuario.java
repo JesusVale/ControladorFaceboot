@@ -36,6 +36,9 @@ public class ControladorUsuario {
         return fachadaUsuario.editarPerfil(usuario);
     }
     
+    public Usuario eliminarUsuario(Usuario usuario){
+        return fachadaUsuario.eliminarUsuario(usuario);
+    }
     public PeticionUsuario consultarUsuarioPorId(Long idUsuario){
         try{
             Usuario usuarioEncontrado = fachadaUsuario.consultarUsuario(idUsuario);

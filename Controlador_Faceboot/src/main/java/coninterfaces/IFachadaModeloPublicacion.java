@@ -14,4 +14,5 @@ import java.util.List;
 public interface IFachadaModeloPublicacion {
     public Publicacion agregarPublicacion(Publicacion publicacion);
     public List<Publicacion> consultarPublicaciones();
+    public Publicacion eliminarPublicacion(Publicacion publicacion);
 }

@@ -33,7 +33,7 @@ public class FachadaModeloUsuario implements IFachadaModeloUsuario {
     }
 
     @Override
-    public boolean eliminarUsuario(Usuario usuario) {
+    public Usuario eliminarUsuario(Usuario usuario) {
         return modeloUsuario.eliminar(usuario.getId());
     }
     

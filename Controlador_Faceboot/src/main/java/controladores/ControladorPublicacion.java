@@ -33,4 +33,12 @@ public class ControladorPublicacion {
         }
         return new PeticionPublicaciones(Eventos.consultarPublicaciones, 400, "No se pudieron Consultar las publicaciones");
     }
+ 
+    public Publicacion eliminarPublicacion(Publicacion publicacion) {
+        return fachadaPublicacion.eliminarPublicacion(publicacion);
+    }
+    
+    
+    
+    
 }

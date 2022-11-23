@@ -30,5 +30,10 @@ public class FachadaModeloPublicacion implements IFachadaModeloPublicacion{
     public List<Publicacion> consultarPublicaciones() {
         return this.modeloPublicacion.consultarPublicaciones();
     }
+
+    @Override
+    public Publicacion eliminarPublicacion(Publicacion publicacion) {
+        return modeloPublicacion.eliminar(publicacion.getId().toString());
+    }
     
 }
