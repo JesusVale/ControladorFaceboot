@@ -6,6 +6,7 @@ package commodelo;
 
 import interfaces.IConexionBD;
 import modelo.ConexionBD;
+import modelos.ModeloComentario;
 import modelos.ModeloPublicacion;
 import modelos.ModeloUsuario;
 
@@ -14,14 +15,19 @@ import modelos.ModeloUsuario;
  * @author jegav
  */
 public class ModelosFactory {
+
     private static final IConexionBD conexionBD = ConexionBD.getInstance();
-    
-    public static ModeloUsuario crearModeloUsuario(){
+
+    public static ModeloUsuario crearModeloUsuario() {
         return new ModeloUsuario(conexionBD);
     }
-    
-    public static ModeloPublicacion crearModeloPublicacion(){
+
+    public static ModeloPublicacion crearModeloPublicacion() {
         return new ModeloPublicacion(conexionBD);
     }
-    
+
+    public static ModeloComentario crearModeloComentario() {
+        return new ModeloComentario(conexionBD);
+    }
+
 }

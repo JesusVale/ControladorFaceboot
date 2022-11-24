@@ -6,10 +6,8 @@ package commodelo;
 
 import coninterfaces.IFachadaModeloPublicacion;
 import entidades.Publicacion;
-import eventos.Eventos;
 import interfaces.IModeloPublicacion;
 import java.util.List;
-import peticiones.PeticionPublicaciones;
 
 /**
  *
