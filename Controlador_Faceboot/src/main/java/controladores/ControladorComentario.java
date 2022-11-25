@@ -9,6 +9,7 @@ import coninterfaces.IFachadaModeloComentario;
 import entidades.Comentario;
 import eventos.Eventos;
 import java.util.List;
+import peticiones.PeticionComentario;
 import peticiones.PeticionComentarios;
 
 /**
@@ -22,8 +23,9 @@ public class ControladorComentario{
         this.fachadaComentario = new FachadaModeloComentario();
     }
 
-    public Comentario registrarComentario(Comentario comentario) {
-        return fachadaComentario.agregarPublicacion(comentario);
+    public PeticionComentario registrarComentario(Comentario comentario) {
+        Comentario comentarioRegistrado = fachadaComentario.agregarPublicacion(comentario);
+        return new PeticionComentario(Eventos.registrarComentario, 200, comentarioRegistrado);
     }
     
     public PeticionComentarios consultarComentarios(Integer idPublicacion){

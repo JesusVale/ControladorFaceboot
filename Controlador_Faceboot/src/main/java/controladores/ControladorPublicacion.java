@@ -9,6 +9,7 @@ import coninterfaces.IFachadaModeloPublicacion;
 import entidades.Publicacion;
 import eventos.Eventos;
 import java.util.List;
+import peticiones.PeticionPublicacion;
 import peticiones.PeticionPublicaciones;
 
 /**
@@ -22,8 +23,9 @@ public class ControladorPublicacion {
         this.fachadaPublicacion = new FachadaModeloPublicacion();
     }
 
-    public Publicacion registrarPublicacion(Publicacion publicacion) {
-        return fachadaPublicacion.agregarPublicacion(publicacion);
+    public PeticionPublicacion registrarPublicacion(Publicacion publicacion) {
+        Publicacion publicacionRegistrada = fachadaPublicacion.agregarPublicacion(publicacion);
+        return new PeticionPublicacion(Eventos.registrarPublicacion, 200, publicacion);
     }
     
     public PeticionPublicaciones consultarPublicaciones(){

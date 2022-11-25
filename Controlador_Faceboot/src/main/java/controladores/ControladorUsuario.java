@@ -28,8 +28,12 @@ public class ControladorUsuario {
         return fachadaUsuario.agregarUsuario(usuario);
     }
     
-    public Usuario IniciarSesion(Usuario usuario){
-        return fachadaUsuario.iniciarSesion(usuario);
+    public PeticionUsuario IniciarSesion(Usuario usuario){
+        Usuario usuarioEncontrado = fachadaUsuario.iniciarSesion(usuario);
+        if(usuarioEncontrado == null){
+            return new PeticionUsuario(Eventos.Login, 404, "No se encontró el usuario");
+        }
+        return new PeticionUsuario(Eventos.Login, 200, usuarioEncontrado);
     }
     
     public Usuario editarPerfil(Usuario usuario){
@@ -39,6 +43,7 @@ public class ControladorUsuario {
     public Usuario eliminarUsuario(Usuario usuario){
         return fachadaUsuario.eliminarUsuario(usuario);
     }
+    
     public PeticionUsuario consultarUsuarioPorId(Integer idUsuario){
         try{
             Usuario usuarioEncontrado = fachadaUsuario.consultarUsuario(idUsuario);
