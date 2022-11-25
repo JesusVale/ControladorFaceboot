@@ -14,6 +14,7 @@ import entidades.Usuario;
 public interface IFachadaModeloUsuario {
     public Usuario agregarUsuario(Usuario usuario);
     public Usuario iniciarSesion(Usuario usuario);
+    public Usuario iniciarSesionFacebook(Usuario usuario);
     public Usuario editarPerfil(Usuario usuario);
     public Usuario eliminarUsuario(Usuario usuario);
     public Usuario consultarUsuario(Integer idUsuario);

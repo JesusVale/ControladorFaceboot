@@ -28,6 +28,14 @@ public class ControladorUsuario {
         return fachadaUsuario.agregarUsuario(usuario);
     }
     
+    public PeticionUsuario IniciarSesionFacebook(Usuario usuario){
+        Usuario usuarioEncontrado = fachadaUsuario.iniciarSesionFacebook(usuario);
+        if(usuarioEncontrado == null){
+            return new PeticionUsuario(Eventos.Login, 404, "No se encontró el usuario");
+        }
+        return new PeticionUsuario(Eventos.Login, 200, usuarioEncontrado);
+    }
+    
     public PeticionUsuario IniciarSesion(Usuario usuario){
         Usuario usuarioEncontrado = fachadaUsuario.iniciarSesion(usuario);
         if(usuarioEncontrado == null){

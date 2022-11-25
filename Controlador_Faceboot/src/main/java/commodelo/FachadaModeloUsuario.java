@@ -26,6 +26,11 @@ public class FachadaModeloUsuario implements IFachadaModeloUsuario {
     public Usuario iniciarSesion(Usuario usuario) {
         return modeloUsuario.login(usuario);
     }
+    
+    @Override
+    public Usuario iniciarSesionFacebook(Usuario usuario) {
+        return modeloUsuario.loginFacebook(usuario);
+    }
 
     @Override
     public Usuario editarPerfil(Usuario usuario) {
