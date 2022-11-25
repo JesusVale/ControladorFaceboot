@@ -24,8 +24,8 @@ public class FachadaModeloComentario implements IFachadaModeloComentario{
     }
 
     @Override
-    public List<Comentario> consultarComentarios() {
-        return modeloComentario.consultarComentarios();
+    public List<Comentario> consultarComentarios(Integer idPublicacion) {
+        return modeloComentario.consultarComentarios(idPublicacion);
     }
 
     @Override

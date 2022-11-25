@@ -16,5 +16,5 @@ public interface IFachadaModeloUsuario {
     public Usuario iniciarSesion(Usuario usuario);
     public Usuario editarPerfil(Usuario usuario);
     public Usuario eliminarUsuario(Usuario usuario);
-    public Usuario consultarUsuario(Long idUsuario);
+    public Usuario consultarUsuario(Integer idUsuario);
 }

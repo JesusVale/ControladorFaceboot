@@ -26,8 +26,8 @@ public class ControladorComentario{
         return fachadaComentario.agregarPublicacion(comentario);
     }
     
-    public PeticionComentarios consultarComentarios(){
-        List<Comentario> comentarios = fachadaComentario.consultarComentarios();
+    public PeticionComentarios consultarComentarios(Integer idPublicacion){
+        List<Comentario> comentarios = fachadaComentario.consultarComentarios(idPublicacion);
         if(comentarios != null){
             return new PeticionComentarios(Eventos.consultarComentarios, 200, comentarios);
         }

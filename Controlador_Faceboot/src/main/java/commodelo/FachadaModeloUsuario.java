@@ -38,7 +38,7 @@ public class FachadaModeloUsuario implements IFachadaModeloUsuario {
     }
     
     @Override
-    public Usuario consultarUsuario(Long idUsuario) {
+    public Usuario consultarUsuario(Integer idUsuario) {
         return modeloUsuario.consultar(idUsuario);
     }
 

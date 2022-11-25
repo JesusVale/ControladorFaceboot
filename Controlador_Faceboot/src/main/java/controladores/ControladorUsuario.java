@@ -39,7 +39,7 @@ public class ControladorUsuario {
     public Usuario eliminarUsuario(Usuario usuario){
         return fachadaUsuario.eliminarUsuario(usuario);
     }
-    public PeticionUsuario consultarUsuarioPorId(Long idUsuario){
+    public PeticionUsuario consultarUsuarioPorId(Integer idUsuario){
         try{
             Usuario usuarioEncontrado = fachadaUsuario.consultarUsuario(idUsuario);
             return new PeticionUsuario(Eventos.consultarUsuarioPorId, 200, usuarioEncontrado);

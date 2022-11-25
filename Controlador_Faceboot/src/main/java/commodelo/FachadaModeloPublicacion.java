@@ -31,7 +31,7 @@ public class FachadaModeloPublicacion implements IFachadaModeloPublicacion{
 
     @Override
     public Publicacion eliminarPublicacion(Publicacion publicacion) {
-        return modeloPublicacion.eliminar(publicacion.getId().toString());
+        return modeloPublicacion.eliminar(publicacion.getId());
     }
     
 }
