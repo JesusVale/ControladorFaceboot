@@ -5,7 +5,7 @@
 package commodelo;
 
 import interfaces.IConexionBD;
-import modelo.ConexionBD;
+import conexiones.ConexionBD;
 import modelos.ModeloComentario;
 import modelos.ModeloPublicacion;
 import modelos.ModeloUsuario;
