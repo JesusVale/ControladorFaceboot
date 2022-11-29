@@ -47,4 +47,9 @@ public class FachadaModeloUsuario implements IFachadaModeloUsuario {
         return modeloUsuario.consultar(idUsuario);
     }
 
+    @Override
+    public Usuario consultarUsuarioPorNombre(String nombre) {
+        return modeloUsuario.consultarUsuarioPorNombre(nombre);
+    }
+
 }

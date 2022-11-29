@@ -18,4 +18,5 @@ public interface IFachadaModeloUsuario {
     public Usuario editarPerfil(Usuario usuario);
     public Usuario eliminarUsuario(Usuario usuario);
     public Usuario consultarUsuario(Integer idUsuario);
+    public Usuario consultarUsuarioPorNombre(String nombre);
 }

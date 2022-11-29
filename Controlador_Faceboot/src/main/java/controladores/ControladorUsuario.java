@@ -62,5 +62,10 @@ public class ControladorUsuario {
         return null;
     }
     
+    public PeticionUsuario consultarUsuarioPorNombre(String nombre){
+        Usuario usuarioEncontrado = fachadaUsuario.consultarUsuarioPorNombre(nombre);
+        return new PeticionUsuario(Eventos.consultarUsuarioPorNombre, 200, usuarioEncontrado);
+    }
+    
     
 }
