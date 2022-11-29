@@ -7,6 +7,8 @@ package commodelo;
 import interfaces.IConexionBD;
 import conexiones.ConexionBD;
 import modelos.ModeloComentario;
+import modelos.ModeloHashtag;
+import modelos.ModeloNotificacion;
 import modelos.ModeloPublicacion;
 import modelos.ModeloUsuario;
 
@@ -28,6 +30,14 @@ public class ModelosFactory {
 
     public static ModeloComentario crearModeloComentario() {
         return new ModeloComentario(conexionBD);
+    }
+
+    public static ModeloNotificacion crearModeloNotificacion() {
+        return new ModeloNotificacion(conexionBD);
+    }
+
+    public static ModeloHashtag crearModeloHashtag() {
+        return new ModeloHashtag(conexionBD);
     }
 
 }
