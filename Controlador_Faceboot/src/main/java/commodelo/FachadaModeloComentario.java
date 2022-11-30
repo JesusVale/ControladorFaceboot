@@ -19,7 +19,7 @@ public class FachadaModeloComentario implements IFachadaModeloComentario{
         this.modeloComentario = ModelosFactory.crearModeloComentario();
     }
     @Override
-    public Comentario agregarPublicacion(Comentario comentario) {
+    public Comentario agregarComentario(Comentario comentario) {
         return modeloComentario.registrar(comentario);
     }
 

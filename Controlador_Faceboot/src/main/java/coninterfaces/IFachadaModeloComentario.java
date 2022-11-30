@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface IFachadaModeloComentario {
 
-    public Comentario agregarPublicacion(Comentario comentario);
+    public Comentario agregarComentario(Comentario comentario);
 
     public List<Comentario> consultarComentarios(Integer idPublicacion);
 

@@ -24,7 +24,7 @@ public class ControladorComentario{
     }
 
     public PeticionComentario registrarComentario(Comentario comentario) {
-        Comentario comentarioRegistrado = fachadaComentario.agregarPublicacion(comentario);
+        Comentario comentarioRegistrado = fachadaComentario.agregarComentario(comentario);
         return new PeticionComentario(Eventos.registrarComentario, 200, comentarioRegistrado);
     }
     
