@@ -40,5 +40,10 @@ public class FachadaModeloHashtag implements IFachadaModeloHashtag{
     public Hashtag eliminarHashtag(Integer idHashtag) {
         return modeloHashtag.eliminar(idHashtag);
     }
+
+    @Override
+    public Hashtag consultarPorTema(String tema) throws Exception {
+        return modeloHashtag.consultarPorTema(tema);
+    }
     
 }

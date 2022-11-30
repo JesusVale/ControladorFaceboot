@@ -16,4 +16,5 @@ public interface IFachadaModeloHashtag {
     public List agregarHashtags(List<Hashtag> hashtags);
     public Hashtag consultarHashtag(Integer idHashtag);
     public Hashtag eliminarHashtag(Integer idHashtag);
+    public Hashtag consultarPorTema(String tema) throws Exception;
 }

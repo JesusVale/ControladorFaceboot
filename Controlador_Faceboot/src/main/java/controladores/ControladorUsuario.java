@@ -67,5 +67,5 @@ public class ControladorUsuario {
         return new PeticionUsuario(Eventos.consultarUsuarioPorNombre, 200, usuarioEncontrado);
     }
     
-    
+
 }

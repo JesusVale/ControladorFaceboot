@@ -7,7 +7,9 @@ package controladores;
 import commodelo.FachadaModeloHashtag;
 import coninterfaces.IFachadaModeloHashtag;
 import entidades.Hashtag;
+import eventos.Eventos;
 import java.util.List;
+import peticiones.PeticionHashtag;
 
 /**
  *
@@ -35,5 +37,14 @@ public class ControladorHashtag {
 
     public Hashtag registrarHashtag(Integer idHashtag) {
         return fachadaHashtag.eliminarHashtag(idHashtag);
+    }
+    
+    public PeticionHashtag consultarPorNombre(String tema){
+        try{
+            Hashtag hashtagEncontrado = fachadaHashtag.consultarPorTema(tema);
+            return new PeticionHashtag(Eventos.consultarHashtagPorTema, 200, hashtagEncontrado);
+        }catch(Exception ex){
+            return new PeticionHashtag(Eventos.consultarHashtagPorTema, 404, ex.getMessage());
+        }
     }
 }
