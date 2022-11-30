@@ -15,4 +15,5 @@ public interface IFachadaModeloPublicacion {
     public Publicacion agregarPublicacion(Publicacion publicacion);
     public List<Publicacion> consultarPublicaciones();
     public Publicacion eliminarPublicacion(Publicacion publicacion);
+    public List<Publicacion> consultarPublicacionesPorEtiqueta(String hashtag) throws Exception;
 }

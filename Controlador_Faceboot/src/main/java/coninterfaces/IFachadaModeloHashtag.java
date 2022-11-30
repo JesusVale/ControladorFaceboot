@@ -5,6 +5,7 @@
 package coninterfaces;
 
 import entidades.Hashtag;
+import entidades.Publicacion;
 import java.util.List;
 
 /**

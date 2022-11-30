@@ -33,5 +33,10 @@ public class FachadaModeloPublicacion implements IFachadaModeloPublicacion{
     public Publicacion eliminarPublicacion(Publicacion publicacion) {
         return modeloPublicacion.eliminar(publicacion.getId());
     }
+
+    @Override
+    public List<Publicacion> consultarPublicacionesPorEtiqueta(String hashtag) throws Exception {
+        return modeloPublicacion.consultarPublicacionesPorEtiqueta(hashtag);
+    }
     
 }

@@ -6,6 +6,7 @@ package commodelo;
 
 import coninterfaces.IFachadaModeloHashtag;
 import entidades.Hashtag;
+import entidades.Publicacion;
 import interfaces.IModeloHashtag;
 import java.util.List;
 
@@ -45,5 +46,5 @@ public class FachadaModeloHashtag implements IFachadaModeloHashtag{
     public Hashtag consultarPorTema(String tema) throws Exception {
         return modeloHashtag.consultarPorTema(tema);
     }
-    
+
 }

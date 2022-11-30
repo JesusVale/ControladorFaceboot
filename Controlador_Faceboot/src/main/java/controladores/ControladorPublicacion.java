@@ -40,7 +40,12 @@ public class ControladorPublicacion {
         return fachadaPublicacion.eliminarPublicacion(publicacion);
     }
     
-    
-    
-    
+    public PeticionPublicaciones consultarPublicacionesPorEtiqueta(String hashtag){
+        try{
+            List<Publicacion> publicacionesEncontradas = this.fachadaPublicacion.consultarPublicacionesPorEtiqueta(hashtag);
+            return new PeticionPublicaciones(Eventos.consultarPublicacionesPorHashtag, 200, publicacionesEncontradas);
+        } catch(Exception ex){
+            return new PeticionPublicaciones(Eventos.consultarPublicacionesPorHashtag, 400, ex.getMessage());
+        }
+    }
 }
