@@ -5,6 +5,7 @@
 package coninterfaces;
 
 import entidades.Comentario;
+import excepciones.PersistException;
 import java.util.List;
 
 
@@ -14,9 +15,9 @@ import java.util.List;
  */
 public interface IFachadaModeloComentario {
 
-    public Comentario agregarComentario(Comentario comentario);
+    public Comentario agregarComentario(Comentario comentario) throws PersistException;
 
-    public List<Comentario> consultarComentarios(Integer idPublicacion);
+    public List<Comentario> consultarComentarios(Integer idPublicacion) throws PersistException;
 
-    public Comentario eliminarComentario(Comentario comentario);
+    public Comentario eliminarComentario(Comentario comentario) throws PersistException;
 }

@@ -8,6 +8,7 @@ import commodelo.FachadaModeloComentario;
 import coninterfaces.IFachadaModeloComentario;
 import entidades.Comentario;
 import eventos.Eventos;
+import excepciones.PersistException;
 import java.util.List;
 import peticiones.PeticionComentario;
 import peticiones.PeticionComentarios;
@@ -24,19 +25,31 @@ public class ControladorComentario{
     }
 
     public PeticionComentario registrarComentario(Comentario comentario) {
-        Comentario comentarioRegistrado = fachadaComentario.agregarComentario(comentario);
-        return new PeticionComentario(Eventos.registrarComentario, 200, comentarioRegistrado);
+        
+        try{
+            Comentario comentarioRegistrado = fachadaComentario.agregarComentario(comentario);
+            return new PeticionComentario(Eventos.registrarComentario, 200, comentarioRegistrado);
+        } catch(PersistException pe){
+            return new PeticionComentario(Eventos.registrarComentario, 503, pe.getMessage());
+        }
+        
     }
     
     public PeticionComentarios consultarComentarios(Integer idPublicacion){
-        List<Comentario> comentarios = fachadaComentario.consultarComentarios(idPublicacion);
-        if(comentarios != null){
+        try{
+            List<Comentario> comentarios = fachadaComentario.consultarComentarios(idPublicacion);
             return new PeticionComentarios(Eventos.consultarComentarios, 200, comentarios);
+        } catch(PersistException pe){
+            return new PeticionComentarios(Eventos.consultarComentarios, 503, pe.getMessage());
         }
-        return new PeticionComentarios(Eventos.consultarComentarios, 400, "No se pudieron Consultar las Comentarios");
     }
  
-    public Comentario eliminarPublicacion(Comentario comentario) {
-        return fachadaComentario.eliminarComentario(comentario);
+    public PeticionComentario eliminarComentario(Comentario comentario) {
+        try{
+            Comentario comentarioEliminado = fachadaComentario.eliminarComentario(comentario);
+            return new PeticionComentario(Eventos.eliminarPublicacion, 200, comentario);
+        } catch(PersistException pe){
+            return new PeticionComentario(Eventos.eliminarPublicacion,503, pe.getMessage());
+        }
     }
 }

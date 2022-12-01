@@ -6,6 +6,7 @@ package commodelo;
 
 import coninterfaces.IFachadaModeloComentario;
 import entidades.Comentario;
+import excepciones.PersistException;
 import interfaces.IModeloComentario;
 import java.util.List;
 
@@ -19,18 +20,18 @@ public class FachadaModeloComentario implements IFachadaModeloComentario{
         this.modeloComentario = ModelosFactory.crearModeloComentario();
     }
     @Override
-    public Comentario agregarComentario(Comentario comentario) {
+    public Comentario agregarComentario(Comentario comentario) throws PersistException {
         return modeloComentario.registrar(comentario);
     }
 
     @Override
-    public List<Comentario> consultarComentarios(Integer idPublicacion) {
+    public List<Comentario> consultarComentarios(Integer idPublicacion) throws PersistException {
         return modeloComentario.consultarComentarios(idPublicacion);
     }
 
     @Override
-    public Comentario eliminarComentario(Comentario comentario) {
-        return modeloComentario.eliminar(comentario.getId().toString());
+    public Comentario eliminarComentario(Comentario comentario) throws PersistException {
+        return modeloComentario.eliminar(comentario);
     }
     
 }
