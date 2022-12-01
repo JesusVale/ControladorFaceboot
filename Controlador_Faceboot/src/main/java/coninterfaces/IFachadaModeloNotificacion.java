@@ -6,6 +6,8 @@ package coninterfaces;
 
 import entidades.Notificacion;
 import entidades.Usuario;
+import excepciones.NotFoundException;
+import excepciones.PersistException;
 import java.util.List;
 
 /**
@@ -13,7 +15,6 @@ import java.util.List;
  * @author tonyd
  */
 public interface IFachadaModeloNotificacion {
-    public Notificacion agregarNotificacion(Notificacion notificacion);
-    public Notificacion consultarNotificacion(Integer idNotificacion);
-    public List<Notificacion> consultarNotificacionesPorRemitente(Usuario remitente);
+    public Notificacion agregarNotificacion(Notificacion notificacion) throws PersistException;
+    public List<Notificacion> consultarNotificacionesPorRemitente(Usuario remitente)throws NotFoundException;
 }

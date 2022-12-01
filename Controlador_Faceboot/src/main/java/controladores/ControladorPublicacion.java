@@ -8,6 +8,8 @@ import commodelo.FachadaModeloPublicacion;
 import coninterfaces.IFachadaModeloPublicacion;
 import entidades.Publicacion;
 import eventos.Eventos;
+import excepciones.NotFoundException;
+import excepciones.PersistException;
 import java.util.List;
 import peticiones.PeticionPublicacion;
 import peticiones.PeticionPublicaciones;
@@ -17,6 +19,7 @@ import peticiones.PeticionPublicaciones;
  * @author tonyd
  */
 public class ControladorPublicacion {
+
     private IFachadaModeloPublicacion fachadaPublicacion;
 
     public ControladorPublicacion() {
@@ -24,27 +27,38 @@ public class ControladorPublicacion {
     }
 
     public PeticionPublicacion registrarPublicacion(Publicacion publicacion) {
-        Publicacion publicacionRegistrada = fachadaPublicacion.agregarPublicacion(publicacion);
-        return new PeticionPublicacion(Eventos.registrarPublicacion, 200, publicacion);
-    }
-    
-    public PeticionPublicaciones consultarPublicaciones(){
-        List<Publicacion> publicaciones = fachadaPublicacion.consultarPublicaciones();
-        if(publicaciones != null){
-            return new PeticionPublicaciones(Eventos.consultarPublicaciones, 200, publicaciones);
+        try {
+            Publicacion publicacionRegistrada = fachadaPublicacion.agregarPublicacion(publicacion);
+            return new PeticionPublicacion(Eventos.registrarPublicacion, 200, publicacionRegistrada);
+        } catch (PersistException pe) {
+            return new PeticionPublicacion(Eventos.registrarPublicacion, 503, pe.getMessage());
         }
-        return new PeticionPublicaciones(Eventos.consultarPublicaciones, 400, "No se pudieron Consultar las publicaciones");
+
     }
- 
-    public Publicacion eliminarPublicacion(Publicacion publicacion) {
-        return fachadaPublicacion.eliminarPublicacion(publicacion);
+
+    public PeticionPublicaciones consultarPublicaciones() {
+        try {
+            List<Publicacion> publicaciones = fachadaPublicacion.consultarPublicaciones();
+            return new PeticionPublicaciones(Eventos.consultarPublicaciones, 200, publicaciones);
+        } catch (NotFoundException nfe) {
+            return new PeticionPublicaciones(Eventos.consultarPublicaciones, 404, nfe.getMessage());
+        }
     }
-    
-    public PeticionPublicaciones consultarPublicacionesPorEtiqueta(String hashtag){
-        try{
+
+    public PeticionPublicacion eliminarPublicacion(Publicacion publicacion) {
+        try {
+            Publicacion publicacionEliminada = fachadaPublicacion.eliminarPublicacion(publicacion);
+            return new PeticionPublicacion(Eventos.eliminarPublicacion, 200, publicacionEliminada);
+        } catch (PersistException pe) {
+            return new PeticionPublicacion(Eventos.eliminarPublicacion, 503, pe.getMessage());
+        }
+    }
+
+    public PeticionPublicaciones consultarPublicacionesPorEtiqueta(String hashtag) {
+        try {
             List<Publicacion> publicacionesEncontradas = this.fachadaPublicacion.consultarPublicacionesPorEtiqueta(hashtag);
             return new PeticionPublicaciones(Eventos.consultarPublicacionesPorHashtag, 200, publicacionesEncontradas);
-        } catch(Exception ex){
+        } catch (Exception ex) {
             return new PeticionPublicaciones(Eventos.consultarPublicacionesPorHashtag, 400, ex.getMessage());
         }
     }

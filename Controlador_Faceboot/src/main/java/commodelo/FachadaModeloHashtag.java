@@ -7,6 +7,7 @@ package commodelo;
 import coninterfaces.IFachadaModeloHashtag;
 import entidades.Hashtag;
 import entidades.Publicacion;
+import excepciones.PersistException;
 import interfaces.IModeloHashtag;
 import java.util.List;
 
@@ -23,22 +24,22 @@ public class FachadaModeloHashtag implements IFachadaModeloHashtag{
     }
     
     @Override
-    public Hashtag agregarHashtag(Hashtag hashtag) {
+    public Hashtag agregarHashtag(Hashtag hashtag) throws PersistException{
         return modeloHashtag.registrar(hashtag);
     }
 
     @Override
-    public List agregarHashtags(List<Hashtag> hashtags) {
+    public List<Hashtag> agregarHashtags(List<Hashtag> hashtags) throws PersistException{
         return modeloHashtag.registrarHashtags(hashtags);
     }
 
     @Override
-    public Hashtag consultarHashtag(Integer idHashtag) {
+    public Hashtag consultarHashtag(Integer idHashtag) throws PersistException{
         return modeloHashtag.consultar(idHashtag);
     }
 
     @Override
-    public Hashtag eliminarHashtag(Integer idHashtag) {
+    public Hashtag eliminarHashtag(Integer idHashtag) throws PersistException{
         return modeloHashtag.eliminar(idHashtag);
     }
 
