@@ -7,6 +7,8 @@ package commodelo;
 import coninterfaces.IFachadaModeloNotificacion;
 import entidades.Notificacion;
 import entidades.Usuario;
+import excepciones.NotFoundException;
+import excepciones.PersistException;
 import interfaces.IModeloNotificacion;
 import java.util.List;
 
@@ -23,17 +25,12 @@ public class FachadaModeloNotificacion implements IFachadaModeloNotificacion{
     }
     
     @Override
-    public Notificacion agregarNotificacion(Notificacion notificacion) {
+    public Notificacion agregarNotificacion(Notificacion notificacion) throws PersistException{
         return modeloNotificacion.registrar(notificacion);
     }
 
     @Override
-    public Notificacion consultarNotificacion(Integer idNotificacion) {
-        return modeloNotificacion.consultar(idNotificacion);
-    }
-
-    @Override
-    public List<Notificacion> consultarNotificacionesPorRemitente(Usuario remitente) {
+    public List<Notificacion> consultarNotificacionesPorRemitente(Usuario remitente) throws NotFoundException{
         return modeloNotificacion.consultarNotificacionesPorRemitente(remitente);
     }
     

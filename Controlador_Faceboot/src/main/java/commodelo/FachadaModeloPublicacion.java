@@ -6,6 +6,8 @@ package commodelo;
 
 import coninterfaces.IFachadaModeloPublicacion;
 import entidades.Publicacion;
+import excepciones.NotFoundException;
+import excepciones.PersistException;
 import interfaces.IModeloPublicacion;
 import java.util.List;
 
@@ -20,17 +22,17 @@ public class FachadaModeloPublicacion implements IFachadaModeloPublicacion{
     }
     
     @Override
-    public Publicacion agregarPublicacion(Publicacion publicacion) {
+    public Publicacion agregarPublicacion(Publicacion publicacion) throws PersistException {
         return modeloPublicacion.registrar(publicacion);
     }
 
     @Override
-    public List<Publicacion> consultarPublicaciones() {
+    public List<Publicacion> consultarPublicaciones() throws NotFoundException{
         return this.modeloPublicacion.consultarPublicaciones();
     }
 
     @Override
-    public Publicacion eliminarPublicacion(Publicacion publicacion) {
+    public Publicacion eliminarPublicacion(Publicacion publicacion) throws PersistException {
         return modeloPublicacion.eliminar(publicacion.getId());
     }
 
