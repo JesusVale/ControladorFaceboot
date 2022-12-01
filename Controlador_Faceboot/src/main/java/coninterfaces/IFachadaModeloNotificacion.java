@@ -5,6 +5,8 @@
 package coninterfaces;
 
 import entidades.Notificacion;
+import entidades.Usuario;
+import java.util.List;
 
 /**
  *
@@ -13,4 +15,5 @@ import entidades.Notificacion;
 public interface IFachadaModeloNotificacion {
     public Notificacion agregarNotificacion(Notificacion notificacion);
     public Notificacion consultarNotificacion(Integer idNotificacion);
+    public List<Notificacion> consultarNotificacionesPorRemitente(Usuario remitente);
 }

@@ -9,6 +9,8 @@ import coninterfaces.IFachadaModeloUsuario;
 import entidades.Publicacion;
 import entidades.Usuario;
 import eventos.Eventos;
+import excepciones.FacebootException;
+import excepciones.PersistException;
 import peticiones.PeticionUsuario;
 
 /**
@@ -24,8 +26,15 @@ public class ControladorUsuario {
     }
     
     
-    public Usuario registrarUsuario(Usuario usuario){
-        return fachadaUsuario.agregarUsuario(usuario);
+    public PeticionUsuario registrarUsuario(Usuario usuario){
+        try{
+            Usuario usuarioRegistrado = fachadaUsuario.agregarUsuario(usuario);
+            return new PeticionUsuario(Eventos.registrarUsuario, 200, usuarioRegistrado);
+        } catch(PersistException pe){
+            return new PeticionUsuario(Eventos.registrarUsuario, 503, pe.getMessage());
+        } catch(FacebootException fe){
+            return new PeticionUsuario(Eventos.registrarUsuario, 406, fe.getMessage());
+        } 
     }
     
     public PeticionUsuario IniciarSesionFacebook(Usuario usuario){

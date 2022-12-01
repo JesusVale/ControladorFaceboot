@@ -3,6 +3,8 @@ package commodelo;
 import entidades.Usuario;
 import coninterfaces.IFachadaModeloUsuario;
 import entidades.Publicacion;
+import excepciones.FacebootException;
+import excepciones.PersistException;
 import interfaces.IModeloUsuario;
 
 /**
@@ -18,7 +20,7 @@ public class FachadaModeloUsuario implements IFachadaModeloUsuario {
     }  
     
     @Override
-    public Usuario agregarUsuario(Usuario usuario) {
+    public Usuario agregarUsuario(Usuario usuario) throws PersistException, FacebootException {
         return modeloUsuario.registrar(usuario);
     }
 

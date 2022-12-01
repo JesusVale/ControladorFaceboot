@@ -6,7 +6,9 @@ package commodelo;
 
 import coninterfaces.IFachadaModeloNotificacion;
 import entidades.Notificacion;
+import entidades.Usuario;
 import interfaces.IModeloNotificacion;
+import java.util.List;
 
 /**
  *
@@ -28,6 +30,11 @@ public class FachadaModeloNotificacion implements IFachadaModeloNotificacion{
     @Override
     public Notificacion consultarNotificacion(Integer idNotificacion) {
         return modeloNotificacion.consultar(idNotificacion);
+    }
+
+    @Override
+    public List<Notificacion> consultarNotificacionesPorRemitente(Usuario remitente) {
+        return modeloNotificacion.consultarNotificacionesPorRemitente(remitente);
     }
     
 }

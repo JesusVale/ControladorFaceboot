@@ -7,6 +7,10 @@ package controladores;
 import commodelo.FachadaModeloNotificacion;
 import coninterfaces.IFachadaModeloNotificacion;
 import entidades.Notificacion;
+import entidades.Usuario;
+import eventos.Eventos;
+import java.util.List;
+import peticiones.PeticionNotificaciones;
 
 /**
  *
@@ -27,5 +31,13 @@ public class ControladorNotificacion {
         return fachadaNotificacion.consultarNotificacion(idNotificacion);
     }
     
+    public PeticionNotificaciones consultarNotificacionesPorRemitente(Usuario remitente){
+        try{
+            List<Notificacion> notificacionesEncontradas = fachadaNotificacion.consultarNotificacionesPorRemitente(remitente);
+            return new PeticionNotificaciones(Eventos.consultarNotificacionesPorRemitente, 200, notificacionesEncontradas);
+        } catch(Exception ex){
+            return new PeticionNotificaciones(Eventos.consultarNotificacionesPorRemitente, 404, ex.getMessage()); 
+        }
+    }
     
 }
