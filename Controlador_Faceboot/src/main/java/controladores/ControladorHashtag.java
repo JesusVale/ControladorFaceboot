@@ -8,8 +8,10 @@ import commodelo.FachadaModeloHashtag;
 import coninterfaces.IFachadaModeloHashtag;
 import entidades.Hashtag;
 import eventos.Eventos;
+import excepciones.PersistException;
 import java.util.List;
 import peticiones.PeticionHashtag;
+import peticiones.PeticionHashtags;
 
 /**
  *
@@ -22,23 +24,42 @@ public class ControladorHashtag {
     public ControladorHashtag() {
         this.fachadaHashtag = new FachadaModeloHashtag();
     }
-
-    public Hashtag registrarHashtag(Hashtag hashtag) {
-        return fachadaHashtag.agregarHashtag(hashtag);
+    public PeticionHashtag registrarHashtag(Hashtag hashtag){
+        try{
+            Hashtag hashtagRegistrado = fachadaHashtag.agregarHashtag(hashtag);
+            return new PeticionHashtag(Eventos.registrarHashtag, 200, hashtagRegistrado);
+        }catch(PersistException pe){
+            return new PeticionHashtag(Eventos.consultarHashtag, 503, pe.getMessage());
+        }
     }
 
-    public List registrarHashtags(List<Hashtag> hashtags) {
-        return fachadaHashtag.agregarHashtags(hashtags);
+    public PeticionHashtags registrarHashtags(List<Hashtag> hashtags){
+        try{
+            List<Hashtag> hashtagsRegistrados = fachadaHashtag.agregarHashtags(hashtags);
+            return new PeticionHashtags(Eventos.registrarHashtags, 200, hashtagsRegistrados);
+        }catch(PersistException pe){
+            return new PeticionHashtags(Eventos.registrarHashtags, 503, pe.getMessage());
+        }
     }
 
-    public Hashtag consultarHashtag(Integer idHashtag) {
-        return fachadaHashtag.consultarHashtag(idHashtag);
-    }
-
-    public Hashtag registrarHashtag(Integer idHashtag) {
-        return fachadaHashtag.eliminarHashtag(idHashtag);
+    public PeticionHashtag consultarHashtag(Integer idHashtag){
+        try{
+            Hashtag hashtagConsultado = fachadaHashtag.consultarHashtag(idHashtag);
+            return new PeticionHashtag(Eventos.consultarHashtag, 200, hashtagConsultado);
+        }catch(PersistException pe){
+            return new PeticionHashtag(Eventos.consultarHashtag, 503, pe.getMessage());
+        }
     }
     
+    public PeticionHashtag eliminarHashtag(Integer idHashtag){
+        try{
+            Hashtag hashtagEliminado = fachadaHashtag.eliminarHashtag(idHashtag);
+            return new PeticionHashtag(Eventos.eliminarHashtag, 200, hashtagEliminado);
+        }catch(PersistException pe){
+            return new PeticionHashtag(Eventos.eliminarHashtag, 503, pe.getMessage());
+        }
+    }
+ 
     public PeticionHashtag consultarPorNombre(String tema){
         try{
             Hashtag hashtagEncontrado = fachadaHashtag.consultarPorTema(tema);
