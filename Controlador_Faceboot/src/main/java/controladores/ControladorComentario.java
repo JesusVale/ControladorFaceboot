@@ -47,9 +47,9 @@ public class ControladorComentario{
     public PeticionComentario eliminarComentario(Comentario comentario) {
         try{
             Comentario comentarioEliminado = fachadaComentario.eliminarComentario(comentario);
-            return new PeticionComentario(Eventos.eliminarPublicacion, 200, comentario);
+            return new PeticionComentario(Eventos.eliminarComentario, 200, comentario);
         } catch(PersistException pe){
-            return new PeticionComentario(Eventos.eliminarPublicacion,503, pe.getMessage());
+            return new PeticionComentario(Eventos.eliminarComentario,503, pe.getMessage());
         }
     }
 }
